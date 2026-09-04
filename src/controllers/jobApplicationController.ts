@@ -57,6 +57,12 @@ export async function deleteJobApplication(req: Request, res: Response): Promise
   res.status(204).send();
 }
 
+export async function deleteAllJobApplications(req: Request, res: Response): Promise<void> {
+  const userId = requireUserId(req);
+  await JobApplicationModel.deleteMany({ userId });
+  res.status(204).send();
+}
+
 export async function getStats(req: Request, res: Response): Promise<void> {
   const userId = requireUserId(req);
   const byStatus = await JobApplicationModel.aggregate([

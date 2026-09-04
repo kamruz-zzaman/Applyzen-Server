@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   createJobApplication,
+  deleteAllJobApplications,
   deleteJobApplication,
   getJobApplication,
   getStats,
@@ -14,6 +15,7 @@ const router = Router();
 router.get("/stats", asyncHandler(getStats));
 router.get("/", asyncHandler(listJobApplications));
 router.post("/", asyncHandler(createJobApplication));
+router.delete("/", asyncHandler(deleteAllJobApplications));
 router.get("/:id", asyncHandler(getJobApplication));
 router.patch("/:id", asyncHandler(updateJobApplication));
 router.delete("/:id", asyncHandler(deleteJobApplication));

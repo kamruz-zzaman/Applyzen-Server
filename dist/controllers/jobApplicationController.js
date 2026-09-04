@@ -52,6 +52,11 @@ export async function deleteJobApplication(req, res) {
         throw new ApiError(404, "Job application not found");
     res.status(204).send();
 }
+export async function deleteAllJobApplications(req, res) {
+    const userId = requireUserId(req);
+    await JobApplicationModel.deleteMany({ userId });
+    res.status(204).send();
+}
 export async function getStats(req, res) {
     const userId = requireUserId(req);
     const byStatus = await JobApplicationModel.aggregate([
